@@ -214,7 +214,6 @@ while running:
         p2_y = HEIGHT - car_height
 
     # coliziune între mașini
-        # coliziune între mașini
 
         if game_mode != "single":
 
@@ -286,7 +285,6 @@ while running:
         screen.blit(bluecar, (p2_x, p2_y))
 
     # afișare winner
-
     if winner is not None:
         winner_text = winner_font.render(
             winner,
@@ -300,11 +298,6 @@ while running:
 
         screen.blit(winner_text, text_rect)
 
-        pygame.display.update()
-
-        pygame.time.delay(3000)
-
-        running = False
 
     pygame.display.update()
 
