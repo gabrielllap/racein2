@@ -8,9 +8,11 @@ pygame.init()
 
 redcar = pygame.image.load("assets/redcar.png")
 bluecar = pygame.image.load("assets/bluecar.png")
+roadcon = pygame.image.load("assets/roadcon.png")
 
 redcar = pygame.transform.scale(redcar, (60, 100))
 bluecar = pygame.transform.scale(bluecar, (60, 100))
+roadcon = pygame.transform.scale(roadcon, (70, 70))
 
 # WINDOW SETTINGS
 
@@ -72,6 +74,21 @@ single_rect = pygame.Rect(390, 220, 500, 80)
 multi_rect = pygame.Rect(390, 340, 500, 80)
 
 ai_rect = pygame.Rect(390, 460, 500, 80)
+
+# OBSTACLES
+
+obstacles = [
+
+    pygame.Rect(350, 250, 70, 70),
+
+    pygame.Rect(800, 400, 70, 70),
+
+    pygame.Rect(550, 520, 70, 70),
+
+    pygame.Rect(950, 250, 70, 70)
+
+]
+
 
 # LOAD LEADERBOARD
 
@@ -268,9 +285,7 @@ while running:
         if p1_y > HEIGHT - car_height:
             p1_y = HEIGHT - car_height
 
-        # =========================
         # PLAYER 2 SCREEN LIMITS
-        # =========================
 
         if p2_x < 0:
             p2_x = 0
@@ -310,6 +325,36 @@ while running:
                     p1_y += speed
                     p2_y -= speed
 
+        # PLAYER 1 OBSTACLE COLLISION
+
+        player1_rect = pygame.Rect(
+            p1_x,
+            p1_y,
+            car_width,
+            car_height
+        )
+
+        for obstacle in obstacles:
+
+            if player1_rect.colliderect(obstacle):
+                # push player back
+                p1_y += 10
+
+        # PLAYER 2 OBSTACLE COLLISION
+
+        if game_mode != "single":
+
+            player2_rect = pygame.Rect(
+                p2_x,
+                p2_y,
+                car_width,
+                car_height
+            )
+
+            for obstacle in obstacles:
+
+                if player2_rect.colliderect(obstacle):
+                    p2_y += 10
         # WINNER CHECK
 
         if p1_y <= 50 and winner is None:
@@ -369,6 +414,14 @@ while running:
             screen,
             WHITE,
             (WIDTH // 2 - 5, y, 10, 20)
+        )
+
+    # DRAW OBSTACLES
+
+    for obstacle in obstacles:
+        screen.blit(
+            roadcon,
+            (obstacle.x, obstacle.y)
         )
 
     # TIMER
