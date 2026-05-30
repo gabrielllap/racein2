@@ -75,6 +75,8 @@ multi_rect = pygame.Rect(390, 340, 500, 80)
 
 ai_rect = pygame.Rect(390, 460, 500, 80)
 
+exit_rect = pygame.Rect(390, 580, 500, 80)
+
 # OBSTACLES
 
 obstacles = [
@@ -113,18 +115,52 @@ def load_leaderboard():
 def draw_menu():
 
     screen.fill((20, 20, 20))
+    mouse_pos = pygame.mouse.get_pos()
+
+    single_color = RED
+    multi_color = BLUE
+    ai_color = GREEN
+
+    if single_rect.collidepoint(mouse_pos):
+        single_color = (255, 80, 80)
+
+    if multi_rect.collidepoint(mouse_pos):
+        multi_color = (80, 150, 255)
+
+    if ai_rect.collidepoint(mouse_pos):
+        ai_color = (80, 255, 80)
 
     # game title
+    shadow = winner_font.render(
+        "RACE IN 2",
+        True,
+        (40, 40, 40)
+    )
+
+
     title = winner_font.render(
         "RACE IN 2",
         True,
-        WHITE
+        (255, 215, 0)
+    )
+    shadow_rect = shadow.get_rect(
+        center=(WIDTH // 2 + 6, 76 + shadow.get_height() // 2)
     )
 
-    screen.blit(title, (280, 70))
+    title_rect = title.get_rect(
+        center=(WIDTH // 2, 70 + title.get_height() // 2)
+    )
+
+    screen.blit(shadow, shadow_rect)
+    screen.blit(title, title_rect)
 
     # single player button
-    pygame.draw.rect(screen, RED, single_rect)
+    pygame.draw.rect(
+        screen,
+        single_color,
+        single_rect,
+        border_radius=20
+    )
 
     single_text = menu_font.render(
         "Single Player",
@@ -132,10 +168,19 @@ def draw_menu():
         WHITE
     )
 
-    screen.blit(single_text, (460, 235))
+    single_text_rect = single_text.get_rect(
+        center=single_rect.center
+    )
+
+    screen.blit(single_text, single_text_rect)
 
     # multiplayer button
-    pygame.draw.rect(screen, BLUE, multi_rect)
+    pygame.draw.rect(
+        screen,
+        multi_color,
+        multi_rect,
+        border_radius=20
+    )
 
     multi_text = menu_font.render(
         "Local Multiplayer",
@@ -143,10 +188,19 @@ def draw_menu():
         WHITE
     )
 
-    screen.blit(multi_text, (360, 355))
+    multi_text_rect = multi_text.get_rect(
+        center=multi_rect.center
+    )
+
+    screen.blit(multi_text, multi_text_rect)
 
     # ai button
-    pygame.draw.rect(screen, GREEN, ai_rect)
+    pygame.draw.rect(
+        screen,
+        ai_color,
+        ai_rect,
+        border_radius=20
+    )
 
     ai_text = menu_font.render(
         "VS AI",
@@ -154,7 +208,36 @@ def draw_menu():
         WHITE
     )
 
-    screen.blit(ai_text, (550, 475))
+    ai_text_rect = ai_text.get_rect(
+        center=ai_rect.center
+    )
+
+    screen.blit(ai_text, ai_text_rect)
+
+#exit button
+    exit_color = (150, 80, 200)
+
+    if exit_rect.collidepoint(mouse_pos):
+        exit_color = (190, 120, 255)
+
+    pygame.draw.rect(
+        screen,
+        exit_color,
+        exit_rect,
+        border_radius=20
+    )
+
+    exit_text = menu_font.render(
+        "EXIT",
+        True,
+        WHITE
+    )
+
+    exit_text_rect = exit_text.get_rect(
+        center=exit_rect.center
+    )
+
+    screen.blit(exit_text, exit_text_rect)
 
     pygame.display.update()
 
@@ -209,6 +292,9 @@ while running:
                     in_menu = False
 
                     start_time = time.time()
+                #exit
+                if exit_rect.collidepoint(mouse_pos):
+                    running = False
 
         continue
 
