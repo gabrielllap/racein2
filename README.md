@@ -105,16 +105,3 @@ The game automatically sorts and displays the top 10 fastest times.
 
 - Python
 - Pygame
-
-## Future Improvements
-
-- Sound effects and music
-- Multiple tracks
-- Power-ups and boosts
-- Improved AI behavior
-- Online multiplayer
-- Animated menus and visual effects
-
-## License
-
-This project is open source and available for educational and personal use.
