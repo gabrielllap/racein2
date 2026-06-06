@@ -1,181 +1,120 @@
-# Race in 2
+# 🏎️ Race In 2
 
-A simple 2D racing game made with Python and Pygame.  
-Players race to the finish line while avoiding obstacles on the road.
+Race In 2 is a fast-paced 2D racing game built with **Python** and **Pygame**. Players race toward the finish line while avoiding obstacles, competing against another player locally, or challenging an AI opponent.
 
----
+## Features
 
-# Features
+- 🎮 **Three Game Modes**
+  - Single Player
+  - Local Multiplayer (1 vs 1)
+  - Player vs AI
 
-- Single Player mode
-- Local Multiplayer mode
-- VS AI mode
-- Obstacle collision system
-- Timer system
-- Leaderboard saved in a text file
-- Smooth car movement
-- Winner screen
+- 🚗 **Car Selection**
+  - Choose from 4 unique cars:
+    - Red
+    - Blue
+    - Green
+    - Pink
 
----
+- 🛣️ **Obstacle System**
+  - Randomly generated road cones create challenges during each race.
 
-# Technologies Used
+- ⏱️ **Timer & Leaderboard**
+  - Track your completion time in Single Player mode.
+  - Best times are automatically saved to a local leaderboard.
 
-- Python
-- Pygame
+- 🤖 **AI Opponent**
+  - Race against a computer-controlled driver with randomized movement speed.
 
----
+- 🏆 **Winner Screen**
+  - Displays the race winner and allows returning to the main menu.
 
-# Game Modes
+## Controls
 
-## 1. Single Player
-Control the red car and try to reach the finish line as fast as possible.
-
-## 2. Local Multiplayer
-Two players can play on the same keyboard.
-
-- Player 1 controls the red car
-- Player 2 controls the blue car
-
-## 3. VS AI
-Play against an AI-controlled opponent that follows the player and moves automatically.
-
----
-
-# Controls
-
-## Player 1 Controls
+### Player 1 (WASD)
 
 | Key | Action |
-|-----|--------|
+|------|--------|
 | W | Move Up |
 | S | Move Down |
 | A | Move Left |
 | D | Move Right |
 
-## Player 2 Controls
+### Player 2 (Arrow Keys)
 
 | Key | Action |
-|-----|--------|
+|------|--------|
 | ↑ | Move Up |
 | ↓ | Move Down |
 | ← | Move Left |
 | → | Move Right |
 
----
+## Requirements
 
-# How the Game Works
+- Python 3.8+
+- Pygame
 
-## Main Menu
-When the game starts, a menu is displayed with 3 options:
-
-- Single Player
-- Local Multiplayer
-- VS AI
-
-The player chooses a mode using the mouse.
-
----
-
-## Player Movement
-Cars move using keyboard controls.  
-The game updates movement every frame using the Pygame game loop.
-
----
-
-## Obstacles
-Road cones are placed on the map as obstacles.
-
-If a car touches an obstacle:
-- The car is pushed backward
-- The player loses time
-
----
-
-## Collision System
-In multiplayer and AI mode:
-- Cars can collide with each other
-- Cars push away from one another when they overlap
-
----
-
-## AI System
-In VS AI mode:
-- The AI car automatically moves forward
-- The AI follows the player's X position
-
----
-
-## Timer System
-The game tracks the total race time:
-- Timer starts when the match begins
-- Timer stops when a player wins
-
----
-
-## Win Condition
-A player wins when their car reaches the finish line at the top of the map.
-
-The winner message is displayed on the screen.
-
----
-
-# Leaderboard System
-
-The game saves scores inside:
-
-```txt
-leaderboard.txt
-```
-
-The leaderboard stores:
-- Player name
-- Finish time
-
-Only the latest 5 scores are displayed in the game.
-
----
-
-# Project Structure
-
-```bash
-project-folder/
-│
-├── racegame.py
-├── leaderboard.txt
-│
-├── assets/
-│   ├── redcar.png
-│   ├── bluecar.png
-│   └── roadcon.png
-```
-
----
-
-# Installation
-
-## 1. Install Python
-Download Python from:
-
-https://www.python.org/
-
----
-
-## 2. Install Pygame
+Install Pygame:
 
 ```bash
 pip install pygame
 ```
 
----
+## Project Structure
 
-## 3. Run the Game
+```text
+project/
+│
+├── racegame.py
+├── leaderboard.txt
+│
+└── assets/
+    ├── redcar.png
+    ├── bluecar.png
+    ├── greencar.png
+    ├── pinkcar.png
+    └── roadcon.png
+```
+
+## Running the Game
 
 ```bash
 python racegame.py
 ```
 
----
+## How to Play
 
-# Author
+1. Launch the game.
+2. Select a game mode from the main menu.
+3. Choose your car.
+4. Race from the bottom of the track to the finish line at the top.
+5. Avoid road cones that slow your progress.
+6. Reach the finish line before your opponent to win.
 
-Created using Python and Pygame.
+## Leaderboard
+
+Single Player completion times are saved in:
+
+```text
+leaderboard.txt
+```
+
+The game automatically sorts and displays the top 10 fastest times.
+
+## Built With
+
+- Python
+- Pygame
+
+## Future Improvements
+
+- Sound effects and music
+- Multiple tracks
+- Power-ups and boosts
+- Improved AI behavior
+- Online multiplayer
+- Animated menus and visual effects
+
+## License
+
+This project is open source and available for educational and personal use.
