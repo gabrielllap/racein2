@@ -1,6 +1,5 @@
 import pygame
 import random
-import math
 import os
 
 pygame.init()
@@ -413,7 +412,7 @@ def load_leaderboard():
 
             scores.sort()
 
-            return scores[:10]
+            return scores[:5]
 
     except:
 
@@ -683,18 +682,18 @@ def draw_car_select():
         if selection_step == 1:
 
             title_text = (
-                "PLAYER 1 (WASD) ALEGE MAȘINA"
+                "PLAYER 1 CHOOSE"
             )
 
         else:
 
             title_text = (
-                "PLAYER 2 (SĂGEȚI) ALEGE MAȘINA"
+                "PLAYER 2 CHOOSE"
             )
 
     else:
 
-        title_text = "ALEGE MAȘINA"
+        title_text = "COOSE YOUR CAR"
 
     title = menu_font.render(
         title_text,
